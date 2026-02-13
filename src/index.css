@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+.task{
+    box-shadow: 0px 0px 7px 0px white;
+}

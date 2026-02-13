@@ -1,0 +1,36 @@
+import { useState, useContext } from 'react'
+import { TaskContext } from '../../context/TaskContext'
+import { v4 as uuidv4 } from 'uuid';
+
+const TaskAddition = () => {
+    const { setTasks, tasks } = useContext(TaskContext)
+
+    const [task, setTask] = useState("")
+
+    const handleAdd = () => {
+        setTasks([...tasks, { id: uuidv4(), task, completed: false }])
+        setTask("")
+    }
+
+    const handleEnter = (e) => {
+        if (e.key == "Enter" && task.trim().length > 3) {
+            handleAdd()
+        }
+    }
+
+    return (
+        <>
+            <div className='w-full flex text-white gap-4 mt-9 justify-center flex-col items-center'>
+                <h1 className='text-3xl text-center text-gray-100 font-bold'>Add Your Tasks</h1>
+
+                <input onKeyDown={handleEnter} value={task} onChange={(e) => setTask(e.target.value)} className='md:w-1/2 w-[90%] border py-2 bg-gray-800/60 rounded-2xl px-3 border-white' type="text" name="" id="" />
+
+                <button disabled={task.trim().length <= 3} onClick={handleAdd} className='bg-cyan-800 disabled:bg-cyan-900 md:w-[10%] font-semibold w-20 px-2 py-2 rounded-xl cursor-pointer disabled:hover:w-[10%] disabled:hover:py-2 hover:w-[11%] transition-all hover:py-3'>Add</button>
+
+            </div>
+
+        </>
+    )
+}
+
+export default TaskAddition
