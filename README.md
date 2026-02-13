@@ -1,16 +1,67 @@
-# React + Vite
+# 🚀 EduZap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**EduZap** is a **student productivity web application** built with **React, Vite, and TailwindCSS**.  
+It helps students manage tasks and organize notes in one clean, responsive interface.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Features (v1 - In Progress)
 
-## React Compiler
+- ✅ **Tasks Management**
+  - Add, edit, delete tasks
+  - Mark tasks as completed
+  - Task priority (Low / Medium / High)
+- 📊 **Dashboard Overview**
+  - Total tasks, completed tasks, pending tasks
+  - Quick preview of today’s tasks
+  - Quick Add Task functionality
+- 🗒️ **Notes**
+  - Create, edit, delete notes
+  - Simple search functionality
+- 💾 **Data Persistence**
+  - Tasks and notes saved in **LocalStorage**
+- 🌐 **Global State**
+  - Managed with **Context API** for consistent updates across pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ **React**  
+- ⚡ **Vite**  
+- 🎨 **TailwindCSS**  
+- 🧭 **React Router**  
+- 🔄 **Context API**  
+
+---
+
+## 📌 Project Status
+
+- Version 1: Tasks functionality implemented ✅  
+- Dashboard and Notes pages in progress  
+- Version 2.0 planned: Habits & streak tracking 🔥  
+
+---
+
+
+
+## ⚡ How to Run
+
+```bash
+npm install
+npm run dev
+```
+
+
+Open http://localhost:5173 in your browser.
+#### 💡 Future Plans (v2.0)
+
+- Habit tracking with streaks
+
+- More advanced filtering and sorting
+
+- Improved dashboard stats
+
+- Export notes to PDF
+
+### Made with ❤️ by Muhammad Ahmad
