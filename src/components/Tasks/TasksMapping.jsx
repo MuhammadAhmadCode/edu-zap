@@ -81,7 +81,7 @@ const TasksMapping = () => {
 
       {tasks.map((task) => {
         return (showCompleted || !task.completed) && (
-          <div key={task.id} className='bg-[#2c2c64] task flex items-center flex-wrap gap-3 md:flex-nowrap justify-between p-3  rounded-2xl text-white'>
+          <div key={task.id} className='bg-[#191928] hover:bg-[#212131] hover:shadow hover:shadow-gray-600 shadow shadow-gray-500 border border-slate-800 flex items-center flex-wrap gap-3 md:flex-nowrap justify-between p-3  rounded-2xl text-white'>
 
             <div className='flex gap-3 justify-center items-center'>
 
@@ -94,11 +94,11 @@ const TasksMapping = () => {
             </div>
 
             <div className='flex gap-3'>
-              {editingID !== task.id && <button className='bg-blue-900 p-2 px-3 rounded-xl cursor-pointer' onClick={() => TaskEdit(task.id)}>{<FaEdit />}</button>}
+              {editingID !== task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 px-3 rounded-xl cursor-pointer' onClick={() => TaskEdit(task.id)}>{<FaEdit />}</button>}
 
-              {editingID !== task.id && <button className='bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</button>}
+              {editingID !== task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</button>}
 
-              {editingID == task.id && <button className='bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => handleCancel(task.id)}>{<GiCancel />}</button>}
+              {editingID == task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => handleCancel(task.id)}>{<GiCancel />}</button>}
 
               {editingID == task.id && <button disabled={edit.trim().length <= 4} className='bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => handleSave(task.id)}>{<BiSave />}</button>}
             </div>
