@@ -28,7 +28,7 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <Link to="https://github.com/ma2565983-pak" target='_blank'>
+            <Link to="https://github.com/MuhammadAhmadCode/edu-zap" target='_blank'>
 
                 <div className='flex hover:bg-blue-500 md:hover:text-xl md:text-lg text-md hover:text-lg text-gray-100 hover:text-gray-200 transition-all bg-blue-400 gap-2 rounded-xl px-3 py-1 items-center'>
 

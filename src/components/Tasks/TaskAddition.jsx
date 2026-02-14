@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { TaskContext } from '../../context/TaskContext'
 import { v4 as uuidv4 } from 'uuid';
 
-const TaskAddition = () => {
+const TaskAddition = ({title="Add Your Tasks",style}) => {
     const { setTasks, tasks } = useContext(TaskContext)
 
     const [task, setTask] = useState("")
@@ -21,7 +21,7 @@ const TaskAddition = () => {
     return (
         <>
             <div className='w-full flex text-white gap-4 mt-9 justify-center flex-col items-center'>
-                <h1 className='text-3xl text-center text-gray-100 font-bold'>Add Your Tasks</h1>
+                <h1 className={`text-center text-gray-100 ${style?style:"font-bold text-3xl"}`}>{title}</h1>
 
                 <input onKeyDown={handleEnter} value={task} onChange={(e) => setTask(e.target.value)} className='md:w-1/2 w-[90%] border py-2 bg-gray-800/60 rounded-2xl px-3 border-white' type="text" name="" id="" />
 

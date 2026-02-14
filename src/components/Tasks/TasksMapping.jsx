@@ -4,6 +4,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BiSave } from 'react-icons/bi';
 import { FaEdit } from 'react-icons/fa';
 import { GiCancel, GiThumbUp } from 'react-icons/gi';
+import TaskDelete from '../../Util/TaskDelete';
+
 
 const TasksMapping = () => {
   const [editingID, setEditingId] = useState(null)
@@ -26,16 +28,6 @@ const TasksMapping = () => {
     let newTasks = [...tasks]
     newTasks[index].completed = !newTasks[index].completed
     setTasks(newTasks)
-  }
-
-  const TaskDelete = (id) => {
-    const c = confirm("Do you Really want to delete Tast?")
-    if (c) {
-      const newTasks = tasks.filter((task) => {
-        return task.id !== id
-      })
-      setTasks(newTasks)
-    }
   }
 
 
