@@ -8,7 +8,7 @@ const TaskAddition = ({title="Add Your Tasks",style}) => {
     const [task, setTask] = useState("")
 
     const handleAdd = () => {
-        setTasks([...tasks, { id: uuidv4(), task, completed: false }])
+        setTasks([...tasks, { id: uuidv4(), task, completed: false, date:Date.now()}])
         setTask("")
     }
 
@@ -23,7 +23,7 @@ const TaskAddition = ({title="Add Your Tasks",style}) => {
             <div className='w-full flex text-white gap-4 mt-9 justify-center flex-col items-center'>
                 <h1 className={`text-center text-gray-100 ${style?style:"font-bold text-3xl"}`}>{title}</h1>
 
-                <input onKeyDown={handleEnter} value={task} onChange={(e) => setTask(e.target.value)} className='md:w-1/2 w-[90%] border py-2 bg-gray-800/60 rounded-2xl px-3 border-white' type="text" name="" id="" />
+                <input onKeyDown={handleEnter} value={task} onChange={(e) => setTask(e.target.value)} className='md:w-1/2 w-[90%] border py-2 bg-gray-700/60 rounded-2xl px-3 border-white' type="text" name="" id="" />
 
                 <button disabled={task.trim().length <= 3} onClick={handleAdd} className='bg-cyan-800 disabled:bg-cyan-900 md:w-[10%] font-semibold w-20 px-2 py-2 rounded-xl cursor-pointer disabled:hover:w-[10%] disabled:hover:py-2 hover:w-[11%] transition-all hover:py-3'>Add</button>
 

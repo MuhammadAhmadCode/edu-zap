@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import Tasks from './pages/Tasks.jsx'
 import Notes from './pages/Notes.jsx'
 import TaskContextProvider from './context/TaskContextProvider.jsx'
+import NotesContextProvider from './context/NotesContextProvider.jsx'
 
 
 const router = createBrowserRouter((
@@ -21,8 +22,10 @@ const router = createBrowserRouter((
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
-  <TaskContextProvider>
-    <RouterProvider router={router} />
-  </TaskContextProvider>
+  <NotesContextProvider>
+    <TaskContextProvider>
+      <RouterProvider router={router} />
+    </TaskContextProvider>
+  </NotesContextProvider>
   // {/* </StrictMode>, */}
 )

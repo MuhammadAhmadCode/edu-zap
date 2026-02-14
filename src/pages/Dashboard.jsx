@@ -28,8 +28,8 @@ const Dashboard = () => {
         <h1 className='text-center text-white text-3xl font-bold'>Your Tasks Info</h1>
         <div className='text-white gap-6 mt-10 grid grid-cols-1 md:grid-cols-3 place-items-center'>
           <TaskCard value={totalTasks} color={"bg-blue-900"} title={"Total Tasks"} />
-          <TaskCard value={CompletedTasks} color={"bg-green-700"} title={"Completed Tasks"} />
-          <TaskCard value={pendingTasks} color={"bg-yellow-700"} title={"Pending Tasks"} />
+          <TaskCard value={CompletedTasks} color={"text-emerald-400"} title={"Completed Tasks"} />
+          <TaskCard value={pendingTasks} color={"text-amber-400"} title={"Pending Tasks"} />
         </div>
 
         <TaskAddition title={"Add a quick Task"} style={"font-semibold text-2xl"} />
