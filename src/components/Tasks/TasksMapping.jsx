@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { TaskContext } from '../../context/TaskContext';
 import { AiFillDelete } from 'react-icons/ai';
-import { BiSave } from 'react-icons/bi';
+import { BiCopy, BiSave } from 'react-icons/bi';
 import { FaEdit } from 'react-icons/fa';
 import { GiCancel, GiThumbUp } from 'react-icons/gi';
 
@@ -36,13 +36,13 @@ const TasksMapping = () => {
     setEditingId(id)
   }
 
-   const TaskDelete = (id) => {
-        const c = confirm("Do you really want to delete the task?")
-        if (c) {
-            const newTasks = tasks.filter((task) => task.id !== id)
-            setTasks(newTasks)
-        }
+  const TaskDelete = (id) => {
+    const c = confirm("Do you really want to delete the task?")
+    if (c) {
+      const newTasks = tasks.filter((task) => task.id !== id)
+      setTasks(newTasks)
     }
+  }
 
   const handleCancel = () => {
     setEdit("")
@@ -94,13 +94,17 @@ const TasksMapping = () => {
             </div>
 
             <div className='flex gap-3'>
-              {editingID !== task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 px-3 rounded-xl cursor-pointer' onClick={() => TaskEdit(task.id)}>{<FaEdit />}</button>}
+              {editingID !== task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskEdit(task.id)}>{<FaEdit />}</button>}
 
-              {editingID !== task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</button>}
+              {editingID !== task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</button>}
 
-              {editingID == task.id && <button className='bg-blue-950 hover:bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => handleCancel(task.id)}>{<GiCancel />}</button>}
+              {editingID == task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleCancel(task.id)}>{<GiCancel />}</button>}
 
-              {editingID == task.id && <button disabled={edit.trim().length <= 4} className='bg-blue-900 p-2 rounded-xl cursor-pointer' onClick={() => handleSave(task.id)}>{<BiSave />}</button>}
+              {editingID == task.id && <button disabled={edit.trim().length <= 4} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleSave(task.id)}>{<BiSave />}</button>}
+              <button onClick={() => {
+                alert("Task Copied")
+                return navigator.clipboard.writeText(task.task)
+              }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</button>
             </div>
 
           </div>

@@ -41,9 +41,9 @@ const NotesMapping = () => {
         setEditingId(null)
     }
 
-    const handleCopy = (text) => {
-        navigator.clipboard.writeText(text)
-    }
+    // const handleCopy = (text) => {
+    //     navigator.clipboard.writeText(text)
+    // }
 
     return (
         <div className='w-[90%] md:w-1/2 flex flex-col mt-20 md:mt-0'>
@@ -52,19 +52,22 @@ const NotesMapping = () => {
                 {notes.length === 0 && <div>No Notes to display</div>}
                 {notes.map((note) => {
                     return (
-                        <div key={note.id} className="bg-[#141d34] rounded-2xl shadow-md hover:bg-slate-800 transition shadow-black hover:shadow-lg hover:shadow-black/85 flex items-center flex-col justify-between gap-14 w-[40%] p-3">
+                        <div key={note.id} className="bg-[#141d34] rounded-2xl shadow-md hover:bg-slate-800 transition shadow-black hover:shadow-lg hover:shadow-black/85 flex items-center flex-col justify-between gap-14 w-[90%] md:w-[49%] p-3">
                             <div className="flex flex-col gap-3">
                                 {editingId !== note.id && <h3 className="text-2xl">{note.title}</h3>}
                                 {editingId !== note.id && <p className="text-sm">{note.noteDescription}</p>}
-                                {editingId == note.id && <input className="outline-none text-xl" placeholder="Enter Edit Title" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} type="text" />}
+                                {editingId == note.id && <input className={`${note.noteDescription.length >20?"py-4":""} outline-none text-xl`} placeholder="Enter Edit Title" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} type="text" />}
                                 {editingId == note.id && <input className="outline-none text-sm" placeholder="Enter Edit Description" value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />}
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex gap-2">
                                 {note.id !== editingId && <button onClick={() => handleEdit(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<FaEdit />}</button>}
                                 {note.id !== editingId && <button onClick={() => handleDelete(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<AiFillDelete />}</button>}
                                 {note.id == editingId && <button onClick={() => handleSave(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiSave />}</button>}
                                 {note.id == editingId && <button onClick={handleCancel} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<GiCancel />}</button>}
-                                <button onClick={handleCopy(note.noteDescription)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</button>
+                                <button onClick={()=>{
+                                    alert("Description Copied")
+                                    return navigator.clipboard.writeText(note.noteDescription)
+                                }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</button>
                             </div>
                         </div>
                     )
