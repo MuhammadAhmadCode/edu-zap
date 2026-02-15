@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { NotesContext } from './NotesContext'
 
 const NotesContextProvider = ({ children }) => {
+    const[filterText,setFilterText] = useState("")
+
     const [notes, setNotes] = useState(() => {
         const stored = localStorage.getItem("notes")
         return stored ? JSON.parse(stored) : []
@@ -12,7 +14,7 @@ const NotesContextProvider = ({ children }) => {
     }, [notes])
     
     return (
-        <NotesContext.Provider value={{notes,setNotes}}>
+        <NotesContext.Provider value={{notes,setNotes,filterText,setFilterText}}>
             {children}
         </NotesContext.Provider>
     )
