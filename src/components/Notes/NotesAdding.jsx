@@ -1,5 +1,7 @@
 import React, { useState,useContext } from 'react'
 import { NotesContext } from '../../context/NotesContext'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const NotesAdding = () => {
     const [title, setTitle] = useState("")
@@ -7,11 +9,13 @@ const NotesAdding = () => {
     const {notes,setNotes} = useContext(NotesContext)
 
     const handleAdd = ()=>{
-        setNotes([...notes,{}])
+        setNotes([...notes,{title,noteDescription,id:uuidv4()}])
+        setTitle("")
+        setNoteDescription("")
     }
 
     return (
-        <div className='w-[90%] flex flex-col gap-3 md:w-1/2 h-90'>
+        <div className='w-[90%] flex flex-col gap-3 md:w-1/2'>
             <div className='flex flex-col gap-2'>
                 <h3 className='text-lg font-semibold'>Note Title:</h3>
                 <input value={title} onChange={(e)=>setTitle(e.target.value)} className='border-gray-600 ml-6 font-bold  border rounded-2xl py-2 px-3 w-[70%] bg-gray-800/60' type="text" />
