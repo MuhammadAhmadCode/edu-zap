@@ -4,6 +4,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BiCopy, BiSave } from 'react-icons/bi';
 import { FaEdit } from 'react-icons/fa';
 import { GiCancel, GiThumbUp } from 'react-icons/gi';
+import { motion } from 'motion/react';
 
 
 
@@ -81,7 +82,7 @@ const TasksMapping = () => {
 
       {tasks.map((task) => {
         return (showCompleted || !task.completed) && (
-          <div key={task.id} className='bg-[#191928] hover:bg-[#212131] hover:shadow hover:shadow-gray-600 shadow shadow-gray-500 border border-slate-800 flex items-center flex-wrap gap-3 md:flex-nowrap justify-between p-3  rounded-2xl text-white'>
+          <motion.div whileHover={{scale:1.04}} key={task.id} className='bg-[#191928] hover:bg-[#212131] hover:shadow hover:shadow-gray-600 shadow shadow-gray-500 border border-slate-800 flex items-center flex-wrap gap-3 md:flex-nowrap justify-between p-3  rounded-2xl text-white'>
 
             <div className='flex gap-3 justify-center items-center'>
 
@@ -94,20 +95,20 @@ const TasksMapping = () => {
             </div>
 
             <div className='flex gap-3'>
-              {editingID !== task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskEdit(task.id)}>{<FaEdit />}</button>}
+              {editingID !== task.id && <motion.button whileHover={{scale:1.04}} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskEdit(task.id)}>{<FaEdit />}</motion.button>}
 
-              {editingID !== task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</button>}
+              {editingID !== task.id && <motion.button whileHover={{scale:1.04}} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => TaskDelete(task.id)}>{<AiFillDelete />}</motion.button>}
 
-              {editingID == task.id && <button className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleCancel(task.id)}>{<GiCancel />}</button>}
+              {editingID == task.id && <motion.button whileHover={{scale:1.04}} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleCancel(task.id)}>{<GiCancel />}</motion.button>}
 
-              {editingID == task.id && <button disabled={edit.trim().length <= 4} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleSave(task.id)}>{<BiSave />}</button>}
-              <button onClick={() => {
+              {editingID == task.id && <motion.button whileHover={{scale:1.04}} disabled={edit.trim().length <= 4} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer" onClick={() => handleSave(task.id)}>{<BiSave />}</motion.button>}
+              <motion.button whileHover={{scale:1.04}} onClick={() => {
                 alert("Task Copied")
                 return navigator.clipboard.writeText(task.task)
-              }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</button>
+              }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</motion.button>
             </div>
 
-          </div>
+          </motion.div>
         )
 
       })}

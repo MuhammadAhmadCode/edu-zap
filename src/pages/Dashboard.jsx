@@ -32,7 +32,7 @@ const Dashboard = () => {
           <TaskCard value={pendingTasks} color={"text-amber-400"} title={"Pending Tasks"} />
         </div>
 
-        <TaskAddition title={"Add a quick Task"} style={"font-semibold text-2xl"} />
+        <TaskAddition title={"Add a quick Task"} animate={true} style={"font-semibold mt-10 text-2xl"} />
 
         <LatestTasks />
 

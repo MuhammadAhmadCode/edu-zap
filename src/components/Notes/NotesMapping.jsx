@@ -4,6 +4,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BiCopy, BiSave, BiSearch } from 'react-icons/bi';
 import { FaEdit } from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
+import { motion } from "motion/react";
 
 
 const NotesMapping = () => {
@@ -59,7 +60,7 @@ const NotesMapping = () => {
 
                 {displayNotes.map((note) => {
                     return (
-                        <div key={note.id} className="bg-[#141d34] rounded-2xl shadow-md hover:bg-slate-800 transition shadow-black hover:shadow-lg hover:shadow-black/85 flex items-center flex-col justify-between gap-14 w-[95%] p-3">
+                        <motion.div whileHover={{scale:1.05}} drag dragConstraints={{left:0,right:0,top:0,bottom:0}} key={note.id} className="bg-[#141d34] rounded-2xl shadow-md hover:bg-slate-800 transition shadow-black hover:shadow-lg hover:shadow-black/85 flex items-center flex-col justify-between gap-14 w-[95%] p-3">
                             <div className="flex flex-col gap-3">
                                 {editingId !== note.id && <h3 className="text-2xl">{note.title}</h3>}
                                 {editingId !== note.id && <p className="text-sm">{note.noteDescription}</p>}
@@ -67,16 +68,16 @@ const NotesMapping = () => {
                                 {editingId == note.id && <input className="outline-none text-sm" placeholder="Enter Edit Description" value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />}
                             </div>
                             <div className="flex gap-2">
-                                {note.id !== editingId && <button onClick={() => handleEdit(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<FaEdit />}</button>}
-                                {note.id !== editingId && <button onClick={() => handleDelete(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<AiFillDelete />}</button>}
-                                {note.id == editingId && <button onClick={() => handleSave(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiSave />}</button>}
-                                {note.id == editingId && <button onClick={handleCancel} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<GiCancel />}</button>}
-                                <button onClick={() => {
+                                {note.id !== editingId && <motion.button whileHover={{scale:1.1}} onClick={() => handleEdit(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<FaEdit />}</motion.button>}
+                                {note.id !== editingId && <motion.button whileHover={{scale:1.1}} onClick={() => handleDelete(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<AiFillDelete />}</motion.button>}
+                                {note.id == editingId && <motion.button whileHover={{scale:1.1}} onClick={() => handleSave(note.id)} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiSave />}</motion.button>}
+                                {note.id == editingId && <motion.button whileHover={{scale:1.1}} onClick={handleCancel} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<GiCancel />}</motion.button>}
+                                <motion.button whileHover={{scale:1.1}} onClick={() => {
                                     alert("Description Copied")
                                     return navigator.clipboard.writeText(note.noteDescription)
-                                }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</button>
+                                }} className="bg-gray-900 shadow shadow-white/25 border border-gray-600 hover:bg-gray-800 hover:shadow-white/65 p-3 rounded-2xl cursor-pointer">{<BiCopy />}</motion.button>
                             </div>
-                        </div>
+                        </motion.div>
                     )
                 })}
             </div>
